@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Model\ResourceModel\CronSchedule;
+namespace Byte8_Profile\Model\ResourceModel\CronSchedule;
 
 use Magento\Cron\Model\ResourceModel\Schedule\Collection as CronScheduleCollection;
 use Magento\Framework\App\RequestInterface;
@@ -17,7 +17,7 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Psr\Log\LoggerInterface;
 use Byte8\Profile\Api\Data\ProfileInterface;
-use Byte8\ProfileSchedule\Api\Data\ScheduleInterface;
+use Byte8_Profile\Api\Data\ScheduleInterface;
 
 /**
  * @inheritDoc

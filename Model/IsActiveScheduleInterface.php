@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Model;
+namespace Byte8_Profile\Model;
 
 /**
  * Interface IsActiveScheduleInterface used to

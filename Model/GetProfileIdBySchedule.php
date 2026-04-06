@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Model;
+namespace Byte8_Profile\Model;
 
 use Magento\Framework\Exception\LocalizedException;
 use Byte8\Profile\Api\Data\ProfileInterface;
 use Byte8\Profile\Model\GetProfileDataByTypeIdInterface;
-use Byte8\ProfileSchedule\Model\Config\ScheduleConfigInterface;
+use Byte8_Profile\Model\Config\ScheduleConfigInterface;
 
 /**
  * @inheritDoc

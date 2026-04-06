@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Controller\Adminhtml\ProfileSchedule;
+namespace Byte8_Profile\Controller\Adminhtml\ProfileSchedule;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -16,8 +16,8 @@ use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\DataObject;
 use Magento\Framework\DataObjectFactory;
 use Magento\Framework\Exception\LocalizedException;
-use Byte8\ProfileSchedule\Api\Data\ScheduleInterface;
-use Byte8\ProfileSchedule\Model\Schedule\CronExpressionValidatorInterface;
+use Byte8_Profile\Api\Data\ScheduleInterface;
+use Byte8_Profile\Model\Schedule\CronExpressionValidatorInterface;
 
 /**
  * @inheritDoc

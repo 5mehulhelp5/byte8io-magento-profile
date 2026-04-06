@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Controller\Adminhtml\ProfileSchedule;
+namespace Byte8_Profile\Controller\Adminhtml\ProfileSchedule;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\Data\Collection;
 use Magento\Ui\Component\MassAction\Filter;
-use Byte8\ProfileSchedule\Model\ResourceModel;
+use Byte8_Profile\Model\ResourceModel;
 
 /**
  * @inheritDoc

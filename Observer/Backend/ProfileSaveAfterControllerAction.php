@@ -6,14 +6,14 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Observer\Backend;
+namespace Byte8_Profile\Observer\Backend;
 
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Byte8\ProfileSchedule\Model\Config\ScheduleConfigInterface;
+use Byte8_Profile\Model\Config\ScheduleConfigInterface;
 
 /**
  * @inheritDoc

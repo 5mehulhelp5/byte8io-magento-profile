@@ -15,8 +15,8 @@ use Byte8\Core\Framework\MessageCollectorInterfaceFactory;
 use Byte8\Profile\Model\ServiceAbstract\ProcessorInterface;
 use Byte8\Profile\Model\ServiceAbstract\Service;
 use Byte8\Profile\Api\HistoryManagementInterface;
-use Byte8\ProfileSchedule\Model\Config\ScheduleConfigInterface;
-use Byte8\ProfileSchedule\Model\Config\ScheduleConfigInterfaceFactory;
+use Byte8_Profile\Model\Config\ScheduleConfigInterface;
+use Byte8_Profile\Model\Config\ScheduleConfigInterfaceFactory;
 /**
  * @inheritDoc
  */

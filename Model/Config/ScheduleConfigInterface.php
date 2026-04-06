@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Model\Config;
+namespace Byte8_Profile\Model\Config;
 
 use Magento\Framework\Exception\LocalizedException;
 use Byte8\Profile\Model\Config\ConfigInterface;

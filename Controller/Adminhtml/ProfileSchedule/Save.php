@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Controller\Adminhtml\ProfileSchedule;
+namespace Byte8_Profile\Controller\Adminhtml\ProfileSchedule;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -22,11 +22,11 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\LayoutFactory;
 use Byte8\Profile\Model\Config\ConfigScopeWriterInterface;
 use Byte8\Profile\Model\TypeInstanceOptionsInterface;
-use Byte8\ProfileSchedule\Api\Data\ScheduleInterface;
-use Byte8\ProfileSchedule\Api\ScheduleRepositoryInterface;
-use Byte8\ProfileSchedule\Model\GetProfileIdByScheduleInterface;
-use Byte8\ProfileSchedule\Model\Schedule;
-use Byte8\ProfileSchedule\Model\ScheduleFactory;
+use Byte8_Profile\Api\Data\ScheduleInterface;
+use Byte8_Profile\Api\ScheduleRepositoryInterface;
+use Byte8_Profile\Model\GetProfileIdByScheduleInterface;
+use Byte8_Profile\Model\Schedule;
+use Byte8_Profile\Model\ScheduleFactory;
 
 /**
  * @inheritDoc

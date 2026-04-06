@@ -61,15 +61,15 @@
                     <item name="sortOrder" xsi:type="number">20</item>
                 </item>
                 <item name="profile_history_list" xsi:type="array">
-                    <item name="class" xsi:type="string">Byte8\ProfileSchedule\Ui\DataProvider\Schedule\Modifier\Form\HistoryListModifier</item>
+                    <item name="class" xsi:type="string">Byte8_Profile\Ui\DataProvider\Schedule\Modifier\Form\HistoryListModifier</item>
                     <item name="sortOrder" xsi:type="number">1</item>
                 </item>
                 <item name="profile_schedule_list" xsi:type="array">
-                    <item name="class" xsi:type="string">Byte8\ProfileSchedule\Ui\DataProvider\Schedule\Modifier\Form\ScheduleListModifier</item>
+                    <item name="class" xsi:type="string">Byte8_Profile\Ui\DataProvider\Schedule\Modifier\Form\ScheduleListModifier</item>
                     <item name="sortOrder" xsi:type="number">2</item>
                 </item>
                 <item name="profile_assignment_data" xsi:type="array">
-                    <item name="class" xsi:type="string">Byte8\ProfileSchedule\Ui\DataProvider\Schedule\Modifier\Form\ProfileAssignmentModifier</item>
+                    <item name="class" xsi:type="string">Byte8_Profile\Ui\DataProvider\Schedule\Modifier\Form\ProfileAssignmentModifier</item>
                     <item name="sortOrder" xsi:type="number">3</item>
                 </item>
             </argument>
@@ -81,9 +81,9 @@
         </arguments>
     </type>
     <!-- Profile schedule UI modifier -->
-    <type name="Byte8\ProfileSchedule\Ui\DataProvider\ScheduleDataProvider">
+    <type name="Byte8_Profile\Ui\DataProvider\ScheduleDataProvider">
         <arguments>
-            <argument name="pool" xsi:type="object">Byte8\ProfileSchedule\Ui\DataProvider\Form\Modifier\Pool</argument>
+            <argument name="pool" xsi:type="object">Byte8_Profile\Ui\DataProvider\Form\Modifier\Pool</argument>
         </arguments>
     </type>
 </config>

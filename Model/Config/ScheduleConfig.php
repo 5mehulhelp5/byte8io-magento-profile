@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Model\Config;
+namespace Byte8_Profile\Model\Config;
 
 use Magento\Cron\Model\Config\Source\Frequency;
 use Magento\Framework\App\CacheInterface;

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Ui\DataProvider;
+namespace Byte8_Profile\Ui\DataProvider;
 
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Exception\LocalizedException;
@@ -14,8 +14,8 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use Magento\Ui\DataProvider\Modifier\PoolInterface;
 use Byte8\Profile\Model\TypeInstanceOptionsInterface;
-use Byte8\ProfileSchedule\Model\ResourceModel\CronSchedule\Collection;
-use Byte8\ProfileSchedule\Model\ResourceModel\CronSchedule\CollectionFactory;
+use Byte8_Profile\Model\ResourceModel\CronSchedule\Collection;
+use Byte8_Profile\Model\ResourceModel\CronSchedule\CollectionFactory;
 
 /**
  * @inheritDoc

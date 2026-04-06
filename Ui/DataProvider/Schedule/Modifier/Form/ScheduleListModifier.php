@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Ui\DataProvider\Schedule\Modifier\Form;
+namespace Byte8_Profile\Ui\DataProvider\Schedule\Modifier\Form;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;

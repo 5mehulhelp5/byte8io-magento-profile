@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Model;
+namespace Byte8_Profile\Model;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchCriteriaInterface;
@@ -17,10 +17,10 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
-use Byte8\ProfileSchedule\Api\Data\ScheduleInterface;
-use Byte8\ProfileSchedule\Api\Data\ScheduleSearchResultsInterface;
-use Byte8\ProfileSchedule\Api\Data\ScheduleSearchResultsInterfaceFactory;
-use Byte8\ProfileSchedule\Api\ScheduleRepositoryInterface;
+use Byte8_Profile\Api\Data\ScheduleInterface;
+use Byte8_Profile\Api\Data\ScheduleSearchResultsInterface;
+use Byte8_Profile\Api\Data\ScheduleSearchResultsInterfaceFactory;
+use Byte8_Profile\Api\ScheduleRepositoryInterface;
 
 /**
  * @inheritDoc

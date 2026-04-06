@@ -6,14 +6,14 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Ui\DataProvider;
+namespace Byte8_Profile\Ui\DataProvider;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use Magento\Ui\DataProvider\Modifier\PoolInterface;
-use Byte8\ProfileSchedule\Api\Data\ScheduleInterface;
-use Byte8\ProfileSchedule\Model\ResourceModel\Schedule\CollectionFactory;
-use Byte8\ProfileSchedule\Model\Schedule;
+use Byte8_Profile\Api\Data\ScheduleInterface;
+use Byte8_Profile\Model\ResourceModel\Schedule\CollectionFactory;
+use Byte8_Profile\Model\Schedule;
 
 /**
  * @inheritDoc

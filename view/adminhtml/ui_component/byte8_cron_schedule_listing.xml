@@ -46,7 +46,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Byte8_Profile::manage</aclResource>
-        <dataProvider class="Byte8\ProfileSchedule\Ui\DataProvider\CronScheduleListingDataProvider" name="byte8_cron_schedule_listing_data_source">
+        <dataProvider class="Byte8_Profile\Ui\DataProvider\CronScheduleListingDataProvider" name="byte8_cron_schedule_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>schedule_id</primaryFieldName>
@@ -128,7 +128,7 @@
                 <label translate="true">Status</label>
                 <dataType>select</dataType>
                 <filter>select</filter>
-                <options class="Byte8\ProfileSchedule\Model\Source\CronStatus"/>
+                <options class="Byte8_Profile\Model\Source\CronStatus"/>
             </settings>
         </column>
         <column name="messages" class="Byte8\Core\Ui\Component\Listing\Columns\ModalContentRenderer" component="Byte8_Core/js/grid/columns/column/modal-content">

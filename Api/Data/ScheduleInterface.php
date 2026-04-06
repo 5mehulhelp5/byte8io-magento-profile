@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Api\Data;
+namespace Byte8_Profile\Api\Data;
 
 /**
  * Interface ScheduleInterface

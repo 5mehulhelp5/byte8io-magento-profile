@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileSchedule\Block\Adminhtml\Edit;
+namespace Byte8_Profile\Block\Adminhtml\Edit;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Block\Widget;

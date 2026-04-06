@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="byte8_profile_config_save_after">
-        <observer name="byte8_profile_schedule_config_save_after" instance="Byte8\ProfileSchedule\Observer\Backend\ProfileSaveAfterControllerAction"/>
+        <observer name="byte8_profile_schedule_config_save_after" instance="Byte8_Profile\Observer\Backend\ProfileSaveAfterControllerAction"/>
     </event>
 </config>

@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace Byte8\ProfileSchedule\Api\Data;
+namespace Byte8_Profile\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
 use Magento\Framework\Api\SearchResultsInterface;

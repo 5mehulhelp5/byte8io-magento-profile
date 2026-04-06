@@ -41,7 +41,7 @@
             <validateUrl path="byte8/profileSchedule/validate"/>
             <submitUrl path="byte8/profileSchedule/save"/>
         </settings>
-        <dataProvider class="Byte8\ProfileSchedule\Ui\DataProvider\ScheduleDataProvider" name="byte8_profile_schedule_form_data_source">
+        <dataProvider class="Byte8_Profile\Ui\DataProvider\ScheduleDataProvider" name="byte8_profile_schedule_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -129,7 +129,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Byte8\ProfileSchedule\Model\Source\ProfileTypeOptions"/>
+                        <options class="Byte8_Profile\Model\Source\ProfileTypeOptions"/>
                         <caption translate="true">-- Please Select --</caption>
                     </settings>
                 </select>
