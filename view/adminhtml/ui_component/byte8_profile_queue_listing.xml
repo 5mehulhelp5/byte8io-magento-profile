@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">byte8_profile_queue_listing.byte8_profile_queue_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>byte8_profile_queue_listing_columns</spinner>
+        <deps>
+            <dep>byte8_profile_queue_listing.byte8_profile_queue_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="byte8_profile_queue_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <filterUrlParams>
+                <param name="id">*</param>
+            </filterUrlParams>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Byte8_Profile::manage</aclResource>
+        <dataProvider class="Byte8\Profile\Ui\DataProvider\QueueListingDataProvider" name="byte8_profile_queue_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Byte8_Profile/js/grid/massactions">
+            <action name="delete">
+                <settings>
+                    <url path="byte8/profileQueue/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                    <confirm>
+                        <title translate="true">Confirm Current Action</title>
+                        <message translate="true">Delete selected queues?</message>
+                    </confirm>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="byte8_profile_queue_listing_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>entity_id</indexField>
+                <resizeEnabled>true</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Entity ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="subject_entity_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Subject ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="subject_type_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Subject Type</label>
+            </settings>
+        </column>
+        <column name="metadata" class="Byte8\Core\Ui\Component\Listing\Columns\ModalContentRenderer" component="Byte8_Core/js/grid/columns/column/modal-content">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Metadata</label>
+            </settings>
+        </column>
+        <column name="message" class="Byte8\Core\Ui\Component\Listing\Columns\ModalContentRenderer" component="Byte8_Core/js/grid/columns/column/modal-content">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Message</label>
+            </settings>
+        </column>
+        <column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Updated At</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

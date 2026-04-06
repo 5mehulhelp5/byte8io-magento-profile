@@ -1,0 +1,72 @@
+<?php
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+declare(strict_types=1);
+
+namespace Byte8\ProfileSchedule\Controller\Adminhtml\Profile;
+
+use Magento\Backend\App\Action\Context;
+use Magento\Backend\Model\View\Result\Redirect;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Data\Collection;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Ui\Component\MassAction\Filter;
+use Byte8\Profile\Api\Data\ProfileInterface;
+use Byte8\Profile\Controller\Adminhtml\Profile\AbstractMassAction;
+use Byte8\Profile\Model\ResourceModel;
+use Byte8\ProfileSchedule\Api\Data\ScheduleInterface;
+use Byte8\ProfileSchedule\Model\ResourceModel\Schedule;
+
+/**
+ * @inheritDoc
+ */
+class MassStatus extends AbstractMassAction implements HttpPostActionInterface
+{
+    /**
+     * @param Context $context
+     * @param Filter $filter
+     * @param Schedule $resource
+     * @param ResourceModel\Profile\CollectionFactory $collectionFactory
+     */
+    public function __construct(
+        Context $context,
+        Filter $filter,
+        private readonly Schedule $resource,
+        ResourceModel\Profile\CollectionFactory $collectionFactory
+    ) {
+        parent::__construct($context, $filter, $collectionFactory);
+    }
+
+    /**
+     * @param Collection $collection
+     * @return Redirect
+     * @throws LocalizedException
+     */
+    protected function massAction(Collection $collection)
+    {
+        $status = (int) $this->getRequest()->getParam('status');
+        $result = [];
+        foreach ($collection->getColumnValues(ProfileInterface::TYPE_ID) as $typeId) {
+            $result[] = $this->resource->update(
+                [ScheduleInterface::STATUS => $status],
+                [ScheduleInterface::TYPE_ID . ' = ?' => $typeId]
+            );
+        }
+
+        if ($result) {
+            $this->messageManager->addSuccessMessage(
+                __('Selected profiles have been updated with new status.')
+            );
+        }
+
+        /** @var Redirect $resultRedirect */
+        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+        $resultRedirect->setPath($this->getComponentRefererUrl());
+
+        return $resultRedirect;
+    }
+}

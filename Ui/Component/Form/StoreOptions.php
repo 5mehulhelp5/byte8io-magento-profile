@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+declare(strict_types=1);
+
+namespace Byte8\Profile\Ui\Component\Form;
+
+use Magento\Framework\Data\OptionSourceInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Store\Api\StoreRepositoryInterface;
+use Magento\Store\Api\WebsiteRepositoryInterface;
+use Magento\Store\Model\Store;
+
+/**
+ * @inheritDoc
+ */
+class StoreOptions implements OptionSourceInterface
+{
+    /**
+     * @var array|null
+     */
+    private ?array $options = null;
+
+    /**
+     * @param StoreRepositoryInterface $storeRepository
+     * @param WebsiteRepositoryInterface $websiteRepository
+     */
+    public function __construct(
+        private readonly StoreRepositoryInterface $storeRepository,
+        private readonly WebsiteRepositoryInterface $websiteRepository
+    ) {
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllOptions(): array
+    {
+        return $this->storeRepository->getList();
+    }
+
+    /**
+     * @inheritDoc
+     * @throws NoSuchEntityException
+     */
+    public function toOptionArray(): ?array
+    {
+        if (null === $this->options) {
+            $this->options = [];
+            foreach ($this->storeRepository->getList() as $store) {
+                if ($store->getCode() == Store::ADMIN_CODE) {
+                    continue;
+                }
+                $website = $this->websiteRepository->getById($store->getWebsiteId());
+                $this->options[] = [
+                    'value' => $store->getId(),
+                    'label' => "{$store->getName()} [{$website->getName()}]"
+                ];
+            }
+        }
+
+        return $this->options;
+    }
+}

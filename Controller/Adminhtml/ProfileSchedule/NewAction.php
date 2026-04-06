@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+declare(strict_types=1);
+
+namespace Byte8\ProfileSchedule\Controller\Adminhtml\ProfileSchedule;
+
+use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
+use Magento\Backend\Model\View\Result\ForwardFactory;
+use Magento\Framework\App\Action\HttpGetActionInterface;
+
+/**
+ * @inheritDoc
+ */
+class NewAction extends Action implements HttpGetActionInterface
+{
+    /**
+     * @see _isAllowed()
+     */
+    public const ADMIN_RESOURCE = 'Byte8_Profile::manage';
+
+    /**
+     * @param ForwardFactory $resultForwardFactory
+     * @param Context $context
+     */
+    public function __construct(
+        private readonly ForwardFactory $resultForwardFactory,
+        Context $context
+    ) {
+        parent::__construct($context);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function execute()
+    {
+        $resultForward = $this->resultForwardFactory->create();
+        return $resultForward->forward('edit');
+    }
+}

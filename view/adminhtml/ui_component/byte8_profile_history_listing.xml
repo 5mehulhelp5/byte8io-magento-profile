@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">byte8_profile_history_listing.byte8_profile_history_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>byte8_profile_history_columns</spinner>
+        <deps>
+            <dep>byte8_profile_history_listing.byte8_profile_history_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="byte8_profile_history_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Byte8_Profile::manage</aclResource>
+        <dataProvider class="Byte8\Profile\Ui\DataProvider\HistoryListingDataProvider" name="byte8_profile_history_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <title translate="true">Confirm Current Action</title>
+                        <message translate="true">Delete selected history(s)?</message>
+                    </confirm>
+                    <url path="byte8/profileHistory/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="byte8_profile_history_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>entity_id</indexField>
+                <resizeEnabled>true</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">History ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="parent_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Profile ID</label>
+            </settings>
+        </column>
+        <column name="status" class="Byte8\Core\Ui\Component\Listing\Columns\StatusRenderer" component="Byte8_Core/js/grid/columns/column/status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">Byte8_Core/grid/cells/html-status</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Status</label>
+                <dataType>select</dataType>
+                <filter>select</filter>
+                <options class="Byte8\Core\Model\Source\StatusInterface"/>
+            </settings>
+        </column>
+        <column name="message" class="Byte8\Core\Ui\Component\Listing\Columns\ModalContentRenderer" component="Byte8_Core/js/grid/columns/column/modal-content">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Message</label>
+            </settings>
+        </column>
+        <column name="type_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Type ID</label>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Created Date</label>
+            </settings>
+        </column>
+        <column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Updated Date</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

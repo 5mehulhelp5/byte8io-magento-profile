@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="admin.scope.col.wrap" htmlClass="accordion" />
+        <referenceContainer name="page.main.actions">
+            <block class="Magento\Backend\Block\Template" name="adminhtml.profile.navigation.container" template="Byte8_Profile::profile/navigation/container.phtml" before="-"/>
+        </referenceContainer>
+        <referenceBlock name="adminhtml.profile.navigation.container">
+            <block class="Byte8\Profile\Block\Adminhtml\Profile\Navigation" name="adminhtml.profile.navigation" template="Byte8_Profile::profile/navigation.phtml" after="adminhtml.system.config.switcher"/>
+        </referenceBlock>
+        <referenceBlock name="adminhtml.profile.navigation">
+            <arguments>
+                <argument name="menu_items" xsi:type="array">
+                    <item name="history" xsi:type="string">byte8/profileHistory</item>
+                    <item name="schedules" xsi:type="string">byte8/profileSchedule</item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

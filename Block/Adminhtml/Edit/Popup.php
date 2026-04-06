@@ -1,0 +1,61 @@
+<?php
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+declare(strict_types=1);
+
+namespace Byte8\ProfileSchedule\Block\Adminhtml\Edit;
+
+use Magento\Backend\Block\Template\Context;
+use Magento\Backend\Block\Widget;
+use Magento\Framework\Serialize\SerializerInterface;
+
+/**
+ * @inheritDoc
+ */
+class Popup extends Widget
+{
+    /**
+     * @var string
+     */
+    protected $_template = 'Byte8_Profile::edit/popup.phtml';
+
+    /**
+     * @param Context $context
+     * @param SerializerInterface $serializer
+     * @param array $data
+     */
+    public function __construct(
+        Context $context,
+        private readonly SerializerInterface $serializer,
+        array $data = []
+    ) {
+        parent::__construct($context, $data);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCloseButtonHtml(): string
+    {
+        return (string) $this->getChildHtml('close_button');
+    }
+
+    /**
+     * @return string
+     */
+    public function getResponseJson(): string
+    {
+        return $this->serializer->serialize(
+            [
+                'schedule' => [
+                    'id' => $this->getRequest()->getParam('id'),
+                    'type_id' => $this->getRequest()->getParam('type_id'),
+                    'label' => $this->getRequest()->getParam('name')
+                ]
+            ]
+        );
+    }
+}

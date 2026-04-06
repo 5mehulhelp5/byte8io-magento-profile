@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Byte8_Profile::profile_core"
+             title="Profiles"
+             translate="title"
+             module="Byte8_Profile"
+             sortOrder="0"
+             parent="Byte8_Core::byte8_core"
+             resource="Byte8_Profile::profile"/>
+        <add id="Byte8_Profile::profile"
+             title="Manage Profiles"
+             translate="title"
+             module="Byte8_Profile"
+             sortOrder="0"
+             parent="Byte8_Profile::profile_core"
+             action="byte8/profile/index"
+             resource="Byte8_Profile::manage"/>
+        <add id="Byte8_Profile::system_config"
+             title="Profile Settings"
+             translate="title"
+             module="Byte8_Profile"
+             sortOrder="10"
+             parent="Byte8_Core::config"
+             action="adminhtml/system_config/edit/section/byte8_profile/"
+             resource="Byte8_Profile::system_config"/>
+        <add id="Byte8_Profile::profile_history"
+             title="View History"
+             translate="title"
+             module="Byte8_Profile"
+             sortOrder="10"
+             parent="Byte8_Profile::profile_core"
+             action="byte8/profileHistory/index"
+             resource="Byte8_Profile::manage"/>
+        <add id="Byte8_Profile::profile_schedule"
+             title="Manage Schedules"
+             translate="title"
+             module="Byte8_Profile"
+             sortOrder="0"
+             parent="Byte8_Profile::profile_core"
+             action="byte8/profileSchedule/index"
+             resource="Byte8_Profile::manage"/>
+        <add id="Byte8_Profile::cron_schedule_monitor"
+             title="Cron Schedule Monitor"
+             translate="title"
+             module="Byte8_Profile"
+             sortOrder="10"
+             parent="Byte8_Profile::profile_core"
+             action="byte8/cronSchedule/index"
+             resource="Byte8_Profile::manage"/>
+    </menu>
+</config>

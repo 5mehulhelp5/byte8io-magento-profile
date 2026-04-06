@@ -1,0 +1,108 @@
+<?php
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+declare(strict_types=1);
+
+namespace Byte8\Profile\Model;
+
+use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Api\SearchResults;
+use Magento\Framework\Exception\CouldNotDeleteException;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Byte8\Profile\Api\Data\QueueInterface;
+use Byte8\Profile\Api\Data\QueueSearchResultsInterface;
+use Byte8\Profile\Api\Data\QueueSearchResultsInterfaceFactory;
+use Byte8\Profile\Api\QueueRepositoryInterface;
+
+/**
+ * @inheritDoc
+ */
+class QueueRepository implements QueueRepositoryInterface
+{
+    /**
+     * @param QueueFactory $modelFactory
+     * @param ResourceModel\Queue $resource
+     * @param ResourceModel\Queue\CollectionFactory $collectionFactory
+     * @param QueueSearchResultsInterfaceFactory $searchResultsFactory
+     * @param CollectionProcessorInterface $collectionProcessor
+     */
+    public function __construct(
+        private readonly QueueFactory $modelFactory,
+        private readonly ResourceModel\Queue $resource,
+        private readonly ResourceModel\Queue\CollectionFactory $collectionFactory,
+        private readonly QueueSearchResultsInterfaceFactory $searchResultsFactory,
+        private readonly CollectionProcessorInterface $collectionProcessor
+    ) {
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getList(SearchCriteriaInterface $searchCriteria): SearchResults
+    {
+        $collection = $this->collectionFactory->create();
+        $this->collectionProcessor->process($searchCriteria, $collection);
+
+        /** @var QueueSearchResultsInterface|SearchResults $searchResults */
+        $searchResult = $this->searchResultsFactory->create();
+        $searchResult->setSearchCriteria($searchCriteria);
+        $searchResult->setItems($collection->getItems());
+        $searchResult->setTotalCount($collection->getSize());
+
+        return $searchResult;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function get($entityId, $field = null): QueueInterface
+    {
+        /** @var QueueInterface $model */
+        $model = $this->modelFactory->create();
+        $this->resource->load($model, $entityId, $field);
+        if (!$model->getId()) {
+            throw new NoSuchEntityException(__('The entity with ID "%1" doesn\'t exist.', $entityId));
+        }
+        return $model;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function save(QueueInterface $model): QueueInterface
+    {
+        try {
+            $this->resource->save($model);
+        } catch (\Exception $exception) {
+            throw new CouldNotSaveException(__($exception->getMessage()));
+        }
+        return $model;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function delete(QueueInterface $model): bool
+    {
+        try {
+            $this->resource->delete($model);
+        } catch (\Exception $exception) {
+            throw new CouldNotDeleteException(__($exception->getMessage()));
+        }
+
+        return true;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function deleteById($entityId): bool
+    {
+        return $this->delete($this->get($entityId));
+    }
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="byte8_profile" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Profile Configuration</label>
+            <tab>byte8_tab</tab>
+            <resource>Byte8_Profile::system_config</resource>
+            <group id="profile_config" translate="label" type="text" sortOrder="2" showInDefault="1">
+                <label>Profile Settings</label>
+                <field id="history_lifetime" translate="label" type="text" sortOrder="3" showInDefault="1">
+                    <label>Profile history lifetime</label>
+                    <comment>Number of days a profile history should be kept for. Default: 7 days</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

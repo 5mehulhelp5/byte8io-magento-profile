@@ -1,0 +1,72 @@
+<?php
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+declare(strict_types=1);
+
+namespace Byte8\Profile\Model;
+
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Registry;
+use Magento\Store\Api\Data\StoreInterface;
+use Byte8\Profile\Api\Data\ProfileInterface;
+
+/**
+ * @inheritDoc
+ */
+class RegistryLocator implements RegistryLocatorInterface
+{
+    /**
+     * @var ProfileInterface|null
+     */
+    private ?ProfileInterface $profile = null;
+
+    /**
+     * @var StoreInterface|null
+     */
+    private ?StoreInterface $store = null;
+
+    /**
+     * @param Registry $registry
+     */
+    public function __construct(
+        private readonly Registry $registry
+    ) {
+    }
+
+    /**
+     * @return ProfileInterface|Profile
+     * @throws LocalizedException
+     */
+    public function getProfile()
+    {
+        if (null !== $this->profile) {
+            return $this->profile;
+        }
+
+        if ($profile = $this->registry->registry(self::CURRENT_PROFILE)) {
+            return $this->profile = $profile;
+        }
+
+        throw new LocalizedException(__("The profile wasn't registered."));
+    }
+
+    /**
+     * @return StoreInterface|mixed|null
+     * @throws LocalizedException
+     */
+    public function getStore()
+    {
+        if (null !== $this->store) {
+            return $this->store;
+        }
+
+        if ($store = $this->registry->registry('current_store')) {
+            return $this->store = $store;
+        }
+
+        throw new LocalizedException(__("The store wasn't registered. Verify the store and try again."));
+    }
+}

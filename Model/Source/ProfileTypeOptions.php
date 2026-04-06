@@ -1,0 +1,80 @@
+<?php
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+declare(strict_types=1);
+
+namespace Byte8\ProfileSchedule\Model\Source;
+
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Data\OptionSourceInterface;
+use Byte8\Profile\Model\TypeInstanceOptionsInterface;
+use Byte8\ProfileSchedule\Api\Data\ScheduleInterface;
+use Byte8\ProfileSchedule\Model\GetScheduleDataInterface;
+
+/**
+ * @inheritDoc
+ */
+class ProfileTypeOptions implements OptionSourceInterface
+{
+    /**
+     * @var array|null
+     */
+    private ?array $options = null;
+
+    /**
+     * @param GetScheduleDataInterface $getScheduleData
+     * @param RequestInterface $request
+     * @param TypeInstanceOptionsInterface $typeInstanceOptions
+     */
+    public function __construct(
+        private readonly GetScheduleDataInterface $getScheduleData,
+        private readonly RequestInterface $request,
+        private readonly TypeInstanceOptionsInterface $typeInstanceOptions
+    ) {
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function toOptionArray(): ?array
+    {
+        if (null !== $this->options) {
+            return $this->options;
+        }
+
+        $this->options = [];
+        $scheduleData = $this->getScheduleData->execute();
+        $options = $this->typeInstanceOptions->getOptionArray();
+
+        if ($scheduleId = $this->request->getParam('id')) {
+            $scheduleData = array_filter($scheduleData, function ($item) use ($scheduleId) {
+                return isset($item[ScheduleInterface::ENTITY_ID])
+                    && $item[ScheduleInterface::ENTITY_ID] !== $scheduleId;
+            });
+        }
+
+        if ($scheduleData = array_column($scheduleData, ScheduleInterface::TYPE_ID)) {
+            $options = array_filter($options, function ($item) use ($scheduleData) {
+                return !in_array($item, $scheduleData);
+            }, ARRAY_FILTER_USE_KEY);
+        }
+
+        if ($typeId = $this->request->getParam(ScheduleInterface::TYPE_ID)) {
+            $options = array_filter($options, function ($item) use ($typeId) {
+                return isset($item[ScheduleInterface::TYPE_ID]) && $item[ScheduleInterface::TYPE_ID] !== $typeId;
+            });
+        }
+
+        foreach ($options as $index => $value) {
+            $this->options[] = [
+                'value' => $index,
+                'label' => $value
+            ];
+        }
+
+        return $this->options;
+    }
+}

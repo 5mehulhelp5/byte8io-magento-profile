@@ -1,0 +1,100 @@
+<?php
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+declare(strict_types=1);
+
+namespace Byte8\Profile\Ui\DataProvider;
+
+use Magento\Framework\Api\Filter;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Ui\DataProvider\AbstractDataProvider;
+use Magento\Ui\DataProvider\Modifier\PoolInterface;
+use Byte8\Profile\Model\ResourceModel\Queue\Listing;
+use Byte8\Profile\Model\ResourceModel\Queue\ListingFactory;
+
+/**
+ * @inheritDoc
+ * Class QueueListingDataProvider used to provide
+ * profile queue listing data.
+ */
+class QueueListingDataProvider extends AbstractDataProvider
+{
+    /**
+     * @param ListingFactory $listingFactory
+     * @param PoolInterface $pool
+     * @param string $name
+     * @param string $primaryFieldName
+     * @param string $requestFieldName
+     * @param array $meta
+     * @param array $data
+     * @param string|null $profileTypeId
+     */
+    public function __construct(
+        ListingFactory $listingFactory,
+        private readonly PoolInterface $pool,
+        string $name,
+        string $primaryFieldName,
+        string $requestFieldName,
+        array $meta = [],
+        array $data = [],
+        ?string $profileTypeId = null
+    ) {
+        $this->collection = $listingFactory->create();
+        parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
+
+        if ($profileTypeId) {
+            $this->collection->addFieldToFilter('main_table.subject_type_id', $profileTypeId);
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getData(): array
+    {
+        /** @var Listing $collection */
+        $collection = $this->getCollection();
+        $data = $collection->toArray();
+
+        foreach ($this->pool->getModifiersInstances() as $modifier) {
+            $data = $modifier->modifyData($data);
+        }
+
+        return $data;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addFilter(Filter $filter): void
+    {
+        /** @var Listing $collection */
+        $collection = $this->getCollection();
+
+        if ($filter->getField() === 'fulltext') {
+            $collection->addFullTextFilter(trim($filter->getValue()));
+        } else {
+            $collection->addFieldToFilter(
+                "main_table.{$filter->getField()}",
+                [$filter->getConditionType() => $filter->getValue()]
+            );
+        }
+    }
+
+    /**
+     * @inheritDoc
+     * @throws LocalizedException
+     */
+    public function getMeta(): array
+    {
+        $meta = parent::getMeta();
+        foreach ($this->pool->getModifiersInstances() as $modifier) {
+            $meta = $modifier->modifyMeta($meta);
+        }
+
+        return $meta;
+    }
+}

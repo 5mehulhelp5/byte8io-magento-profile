@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Byte8 Ltd. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">byte8_cron_schedule_listing.byte8_cron_schedule_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>byte8_cron_schedule_columns</spinner>
+        <deps>
+            <dep>byte8_cron_schedule_listing.byte8_cron_schedule_listing_data_source</dep>
+        </deps>
+    </settings>
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">Byte8_Profile/grid/toolbar</item>
+            </item>
+        </argument>
+        <container name="columns_controls">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsData" xsi:type="array">
+                        <item name="provider" xsi:type="string">byte8_cron_schedule_listing.byte8_cron_schedule_listing.byte8_cron_schedule_columns</item>
+                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                </item>
+            </argument>
+        </container>
+    </container>
+    <dataSource name="byte8_cron_schedule_listing_data_source" component="Byte8_Profile/js/grid/provider-auto-refresh">
+        <settings>
+            <filterUrlParams>
+                <param name="id">*</param>
+            </filterUrlParams>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">schedule_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Byte8_Profile::manage</aclResource>
+        <dataProvider class="Byte8\ProfileSchedule\Ui\DataProvider\CronScheduleListingDataProvider" name="byte8_cron_schedule_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>schedule_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Byte8_Profile/js/grid/massactions">
+            <action name="delete">
+                <settings>
+                    <url path="byte8/cronSchedule/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                    <confirm>
+                        <title translate="true">Confirm Current Action</title>
+                        <message translate="true">Delete selected cron schedules?</message>
+                    </confirm>
+                </settings>
+            </action>
+            <action name="status">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isAjax" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+                <settings>
+                    <type>status</type>
+                    <label translate="true">Change schedule</label>
+                    <actions>
+                        <action name="0">
+                            <type>pending</type>
+                            <label translate="true">Schedule Cron Task</label>
+                            <url path="byte8/cronSchedule/massStatus">
+                                <param name="status">pending</param>
+                            </url>
+                        </action>
+                        <action name="1">
+                            <type>stop</type>
+                            <label translate="true">Stop Cron Task</label>
+                            <url path="byte8/cronSchedule/massStatus">
+                                <param name="status">skipped</param>
+                            </url>
+                        </action>
+                    </actions>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="byte8_cron_schedule_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>schedule_id</indexField>
+                <resizeEnabled>true</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="schedule_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Schedule ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="status" class="Byte8\Core\Ui\Component\Listing\Columns\StatusRenderer" component="Byte8_Core/js/grid/columns/column/status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">Byte8_Core/grid/cells/html-status</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Status</label>
+                <dataType>select</dataType>
+                <filter>select</filter>
+                <options class="Byte8\ProfileSchedule\Model\Source\CronStatus"/>
+            </settings>
+        </column>
+        <column name="messages" class="Byte8\Core\Ui\Component\Listing\Columns\ModalContentRenderer" component="Byte8_Core/js/grid/columns/column/modal-content">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Messages</label>
+            </settings>
+        </column>
+        <column name="job_code">
+            <settings>
+                <label translate="true">Job Code</label>
+                <dataType>select</dataType>
+                <filter>select</filter>
+                <options class="Byte8\Profile\Model\Source\ProfileType"/>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Created At</label>
+            </settings>
+        </column>
+        <column name="scheduled_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Scheduled At</label>
+            </settings>
+        </column>
+        <column name="executed_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Executed At</label>
+            </settings>
+        </column>
+        <column name="finished_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Finished At</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

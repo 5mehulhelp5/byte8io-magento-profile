@@ -1,0 +1,22 @@
+{
+    "name": "byte8/module-profile",
+    "description": "Byte8 -- Magento: Profile Module.",
+    "require": {
+        "php": "~8.1.0||~8.2.0||~8.3.0||~8.4.0",
+        "byte8/module-core": "*"
+    },
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Byte8\\Profile\\": ""
+        }
+    },
+    "version": "1.0.0"
+}
