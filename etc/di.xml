@@ -73,39 +73,39 @@
     <preference for="Byte8\Profile\Api\QueueRepositoryInterface" type="Byte8\Profile\Model\QueueRepository"/>
 
     <!-- Profile schedule ::: interface | repository | management -->
-    <preference for="Byte8_Profile\Api\Data\ScheduleInterface" type="Byte8_Profile\Model\Schedule"/>
-    <preference for="Byte8_Profile\Api\Data\ScheduleSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-    <preference for="Byte8_Profile\Api\ScheduleRepositoryInterface" type="Byte8_Profile\Model\ScheduleRepository"/>
-    <preference for="Byte8_Profile\Model\ScheduleProcessorInterface" type="Byte8_Profile\Model\ScheduleProcessor"/>
-    <preference for="Byte8_Profile\Model\GetProfileIdByScheduleInterface" type="Byte8_Profile\Model\GetProfileIdBySchedule"/>
-    <preference for="Byte8_Profile\Model\GetScheduleDataInterface" type="Byte8_Profile\Model\GetScheduleData"/>
-    <preference for="Byte8_Profile\Model\IsActiveScheduleInterface" type="Byte8_Profile\Model\IsActiveSchedule"/>
-    <preference for="Byte8_Profile\Model\Schedule\CronExpressionValidatorInterface" type="Byte8_Profile\Model\Schedule\CronExpressionValidator"/>
+    <preference for="Byte8\Profile\Api\Data\ScheduleInterface" type="Byte8\Profile\Model\Schedule"/>
+    <preference for="Byte8\Profile\Api\Data\ScheduleSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Byte8\Profile\Api\ScheduleRepositoryInterface" type="Byte8\Profile\Model\ScheduleRepository"/>
+    <preference for="Byte8\Profile\Model\ScheduleProcessorInterface" type="Byte8\Profile\Model\ScheduleProcessor"/>
+    <preference for="Byte8\Profile\Model\GetProfileIdByScheduleInterface" type="Byte8\Profile\Model\GetProfileIdBySchedule"/>
+    <preference for="Byte8\Profile\Model\GetScheduleDataInterface" type="Byte8\Profile\Model\GetScheduleData"/>
+    <preference for="Byte8\Profile\Model\IsActiveScheduleInterface" type="Byte8\Profile\Model\IsActiveSchedule"/>
+    <preference for="Byte8\Profile\Model\Schedule\CronExpressionValidatorInterface" type="Byte8\Profile\Model\Schedule\CronExpressionValidator"/>
     <!-- Profile schedule UI list-->
-    <virtualType name="Byte8_Profile\Model\ResourceModel\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <virtualType name="Byte8\Profile\Model\ResourceModel\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">byte8_profile_schedule</argument>
-            <argument name="resourceModel" xsi:type="string">Byte8_Profile\Model\ResourceModel\Schedule</argument>
+            <argument name="resourceModel" xsi:type="string">Byte8\Profile\Model\ResourceModel\Schedule</argument>
         </arguments>
     </virtualType>
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="byte8_profile_schedule_listing_data_source" xsi:type="string">Byte8_Profile\Model\ResourceModel\Grid\Collection</item>
+                <item name="byte8_profile_schedule_listing_data_source" xsi:type="string">Byte8\Profile\Model\ResourceModel\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Framework\Model\Entity\RepositoryFactory">
         <arguments>
             <argument name="entities" xsi:type="array">
-                <item name="Byte8_Profile\Api\Data\ScheduleInterface" xsi:type="string">Byte8_Profile\Api\ScheduleRepositoryInterface</item>
+                <item name="Byte8\Profile\Api\Data\ScheduleInterface" xsi:type="string">Byte8\Profile\Api\ScheduleRepositoryInterface</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Framework\EntityManager\MetadataPool">
         <arguments>
             <argument name="metadata" xsi:type="array">
-                <item name="Byte8_Profile\Api\Data\ScheduleInterface" xsi:type="array">
+                <item name="Byte8\Profile\Api\Data\ScheduleInterface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">byte8_profile_schedule</item>
                     <item name="identifierField" xsi:type="string">entity_id</item>
                 </item>
@@ -113,30 +113,30 @@
         </arguments>
     </type>
     <!-- profile config instance ::: schedule -->
-    <preference for="Byte8_Profile\Model\Config\ScheduleConfigInterface" type="Byte8_Profile\Model\Config\ScheduleConfig"/>
+    <preference for="Byte8\Profile\Model\Config\ScheduleConfigInterface" type="Byte8\Profile\Model\Config\ScheduleConfig"/>
     <!-- Logger -->
-    <virtualType name="Byte8_Profile\VirtualStreamHandler" type="Magento\Framework\Logger\Handler\Base">
+    <virtualType name="Byte8\Profile\VirtualStreamHandler" type="Magento\Framework\Logger\Handler\Base">
         <arguments>
             <argument name="fileName" xsi:type="string">var/log/byte8/scheduler.log</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Byte8_Profile\VirtualRotationStreamHandler" type="Byte8\Core\Logger\Handler\RotationSteamHandler">
+    <virtualType name="Byte8\Profile\VirtualRotationStreamHandler" type="Byte8\Core\Logger\Handler\RotationSteamHandler">
         <arguments>
             <argument name="fileName" xsi:type="string">var/log/byte8/scheduler.log</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Byte8_Profile\VirtualLogger" type="Byte8\Core\Logger\LogProcessor">
+    <virtualType name="Byte8\Profile\VirtualLogger" type="Byte8\Core\Logger\LogProcessor">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="debug" xsi:type="object">Byte8_Profile\VirtualStreamHandler</item>
-                <item name="rotation_debug" xsi:type="object">Byte8_Profile\VirtualRotationStreamHandler</item>
+                <item name="debug" xsi:type="object">Byte8\Profile\VirtualStreamHandler</item>
+                <item name="rotation_debug" xsi:type="object">Byte8\Profile\VirtualRotationStreamHandler</item>
                 <item name="mail" xsi:type="object">Byte8\Core\Logger\Handler\MailStreamHandler</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Byte8_Profile\Model\ScheduleProcessor">
+    <type name="Byte8\Profile\Model\ScheduleProcessor">
         <arguments>
-            <argument name="logger" xsi:type="object">Byte8_Profile\VirtualLogger</argument>
+            <argument name="logger" xsi:type="object">Byte8\Profile\VirtualLogger</argument>
         </arguments>
     </type>
 

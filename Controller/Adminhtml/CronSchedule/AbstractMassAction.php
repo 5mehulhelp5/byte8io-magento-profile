@@ -6,15 +6,15 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Controller\Adminhtml\CronSchedule;
+namespace Byte8\ProfileController\Adminhtml\CronSchedule;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Ui\Component\MassAction\Filter;
-use Byte8_Profile\Model\ResourceModel\CronSchedule\Collection;
-use Byte8_Profile\Model\ResourceModel\CronSchedule\CollectionFactory;
+use Byte8\Profile\Model\ResourceModel\CronSchedule\Collection;
+use Byte8\Profile\Model\ResourceModel\CronSchedule\CollectionFactory;
 
 /**
  * Class AbstractMassAction

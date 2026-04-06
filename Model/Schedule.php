@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Model;
+namespace Byte8\Profile\Model;
 
 use Magento\Framework\DataObject\IdentityInterface;
 use Byte8\Core\Model\AbstractModel;
-use Byte8_Profile\Model\ResourceModel;
-use Byte8_Profile\Api\Data\ScheduleInterface;
+use Byte8\Profile\Model\ResourceModel;
+use Byte8\Profile\Api\Data\ScheduleInterface;
 
 /**
  * @inheritDoc

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Model;
+namespace Byte8\Profile\Model;
 
 /**
  * Interface GetScheduleDataInterface used to

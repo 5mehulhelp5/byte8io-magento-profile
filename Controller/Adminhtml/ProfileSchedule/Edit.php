@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Controller\Adminhtml\ProfileSchedule;
+namespace Byte8\Profile\Controller\Adminhtml\ProfileSchedule;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\Model\View\Result\Page;

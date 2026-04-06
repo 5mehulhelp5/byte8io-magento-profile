@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Model\ResourceModel;
+namespace Byte8\Profile\Model\ResourceModel;
 
 use Magento\Framework\Exception\LocalizedException;
 use Byte8\Core\Model\ResourceModel\AbstractResource;
 use Byte8\Core\Model\Source\StatusInterface;
-use Byte8_Profile\Api\Data\ScheduleInterface;
+use Byte8\Profile\Api\Data\ScheduleInterface;
 
 /**
  * @inheritDoc

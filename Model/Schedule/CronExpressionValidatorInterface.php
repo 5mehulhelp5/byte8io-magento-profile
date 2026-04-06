@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Model\Schedule;
+namespace Byte8\Profile\Model\Schedule;
 
 use Magento\Framework\Exception\CronException;
 

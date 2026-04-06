@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Controller\Adminhtml\Profile;
+namespace Byte8\ProfileController\Adminhtml\Profile;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
@@ -18,8 +18,8 @@ use Magento\Ui\Component\MassAction\Filter;
 use Byte8\Profile\Api\Data\ProfileInterface;
 use Byte8\Profile\Controller\Adminhtml\Profile\AbstractMassAction;
 use Byte8\Profile\Model\ResourceModel;
-use Byte8_Profile\Api\Data\ScheduleInterface;
-use Byte8_Profile\Model\ResourceModel\Schedule;
+use Byte8\Profile\Api\Data\ScheduleInterface;
+use Byte8\Profile\Model\ResourceModel\Schedule;
 
 /**
  * @inheritDoc

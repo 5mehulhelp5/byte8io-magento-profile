@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Model\ScheduleProcessor;
+namespace Byte8\Profile\Model\ScheduleProcessor;
 
 use Byte8\Core\Framework\MessageCollectorInterface;
 use Byte8\Core\Framework\MessageCollectorInterfaceFactory;

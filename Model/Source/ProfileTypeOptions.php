@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Model\Source;
+namespace Byte8\Profile\Model\Source;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\OptionSourceInterface;
 use Byte8\Profile\Model\TypeInstanceOptionsInterface;
-use Byte8_Profile\Api\Data\ScheduleInterface;
-use Byte8_Profile\Model\GetScheduleDataInterface;
+use Byte8\Profile\Api\Data\ScheduleInterface;
+use Byte8\Profile\Model\GetScheduleDataInterface;
 
 /**
  * @inheritDoc

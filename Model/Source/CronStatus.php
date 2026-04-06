@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Model\Source;
+namespace Byte8\Profile\Model\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
 

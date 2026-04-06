@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Ui\DataProvider\Schedule\Modifier\Form;
+namespace Byte8\Profile\Ui\DataProvider\Schedule\Modifier\Form;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
-use Byte8_Profile\Api\Data\ScheduleInterface;
-use Byte8_Profile\Model\GetProfileIdByScheduleInterface;
+use Byte8\Profile\Api\Data\ScheduleInterface;
+use Byte8\Profile\Model\GetProfileIdByScheduleInterface;
 
 /**
  * @inheritDoc

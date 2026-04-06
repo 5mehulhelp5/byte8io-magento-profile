@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Controller\Adminhtml\ProfileSchedule;
+namespace Byte8\ProfileController\Adminhtml\ProfileSchedule;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -14,7 +14,7 @@ use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Ui\Component\MassAction\Filter;
 use Magento\Framework\Data\Collection;
-use Byte8_Profile\Model\ResourceModel;
+use Byte8\Profile\Model\ResourceModel;
 
 /**
  * Class AbstractMassAction

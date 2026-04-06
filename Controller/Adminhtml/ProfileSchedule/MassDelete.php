@@ -6,16 +6,16 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Controller\Adminhtml\ProfileSchedule;
+namespace Byte8\ProfileController\Adminhtml\ProfileSchedule;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Ui\Component\MassAction\Filter;
 use Magento\Framework\Data\Collection;
 use Byte8\Profile\Model\TypeInstanceOptionsInterface;
-use Byte8_Profile\Api\Data\ScheduleInterface;
-use Byte8_Profile\Api\ScheduleRepositoryInterface;
-use Byte8_Profile\Model\ResourceModel;
+use Byte8\Profile\Api\Data\ScheduleInterface;
+use Byte8\Profile\Api\ScheduleRepositoryInterface;
+use Byte8\Profile\Model\ResourceModel;
 
 /**
  * @inheritDoc

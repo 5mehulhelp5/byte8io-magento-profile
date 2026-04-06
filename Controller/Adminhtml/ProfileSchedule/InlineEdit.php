@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Controller\Adminhtml\ProfileSchedule;
+namespace Byte8\Profile\Controller\Adminhtml\ProfileSchedule;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -14,8 +14,8 @@ use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
-use Byte8_Profile\Api\Data\ScheduleInterface;
-use Byte8_Profile\Model\ResourceModel\Schedule;
+use Byte8\Profile\Api\Data\ScheduleInterface;
+use Byte8\Profile\Model\ResourceModel\Schedule;
 
 /**
  * @inheritDoc

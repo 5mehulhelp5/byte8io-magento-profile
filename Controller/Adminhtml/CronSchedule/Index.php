@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Controller\Adminhtml\CronSchedule;
+namespace Byte8\ProfileController\Adminhtml\CronSchedule;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;

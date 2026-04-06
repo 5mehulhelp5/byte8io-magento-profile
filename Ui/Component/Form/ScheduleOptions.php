@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Ui\Component\Form;
+namespace Byte8\ProfileUi\Component\Form;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\OptionSourceInterface;
-use Byte8_Profile\Api\Data\ScheduleInterface;
-use Byte8_Profile\Model\GetScheduleDataInterface;
+use Byte8\Profile\Api\Data\ScheduleInterface;
+use Byte8\Profile\Model\GetScheduleDataInterface;
 
 /**
  * @inheritDoc

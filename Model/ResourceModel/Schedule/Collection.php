@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Model\ResourceModel\Schedule;
+namespace Byte8\Profile\Model\ResourceModel\Schedule;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Byte8_Profile\Api\Data\ScheduleInterface;
-use Byte8_Profile\Model\Schedule;
-use Byte8_Profile\Model\ResourceModel;
+use Byte8\Profile\Api\Data\ScheduleInterface;
+use Byte8\Profile\Model\Schedule;
+use Byte8\Profile\Model\ResourceModel;
 
 /**
  * @inheritDoc

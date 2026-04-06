@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Api;
+namespace Byte8\Profile\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchResults;
@@ -15,9 +15,9 @@ use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Byte8_Profile\Api\Data\ScheduleInterface;
-use Byte8_Profile\Api\Data\ScheduleSearchResultsInterface;
-use Byte8_Profile\Model\Schedule;
+use Byte8\Profile\Api\Data\ScheduleInterface;
+use Byte8\Profile\Api\Data\ScheduleSearchResultsInterface;
+use Byte8\Profile\Model\Schedule;
 
 /**
  * Interface ScheduleRepositoryInterface

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8_Profile\Ui\DataProvider\CronSchedule\Modifier\Listing;
+namespace Byte8\Profile\Ui\DataProvider\CronSchedule\Modifier\Listing;
 
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
 
