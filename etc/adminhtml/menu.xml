@@ -12,7 +12,7 @@
              translate="title"
              module="Byte8_Profile"
              sortOrder="0"
-             parent="Byte8_Core::byte8_core"
+             parent="Byte8_Core::byte8"
              resource="Byte8_Profile::profile"/>
         <add id="Byte8_Profile::profile"
              title="Manage Profiles"

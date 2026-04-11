@@ -629,5 +629,5 @@ interface MediaConfigInterface extends ConfigInterface
 
 ## Related Documentation
 
-- **Profile Extension Patterns**: See `Byte8_PlentyProfile` module documentation for patterns on extending profiles for external system integration
+- **Profile Extension Patterns**: See `Byte8_PlentyCore` module documentation for patterns on extending profiles for external system integration
 - **Setup System Architecture**: For module-specific setup documentation, see the `docs/` folder in each profile module
