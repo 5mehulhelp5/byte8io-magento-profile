@@ -456,7 +456,7 @@ class ProfileConfigData extends AbstractModifier implements ModifierInterface
             $componentName,
             [
                 'Magento_Ui/js/modal/modal-component',
-                'Byte8_PlentyProfile/js/components/create-external-entity-button'
+                'Byte8_PlentyCore/js/components/create-external-entity-button'
             ]
         )) {
             return false;
