@@ -12,8 +12,6 @@
                 <resource id="Byte8_Core::byte8_core">
                     <resource id="Byte8_Profile::profile" title="Byte8 Profile" translate="title" sortOrder="20">
                         <resource id="Byte8_Profile::manage" title="Profile Actions" translate="title" sortOrder="10"/>
-                        <resource id="Byte8_Profile::manage" title="History Actions" translate="title" sortOrder="20"/>
-                        <resource id="Byte8_Profile::manage" title="Schedule Actions" translate="title" sortOrder="20"/>
                     </resource>
                 </resource>
                 <resource id="Magento_Backend::stores">
