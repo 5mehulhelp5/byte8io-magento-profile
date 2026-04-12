@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileController\Adminhtml\ProfileSchedule;
+namespace Byte8\Profile\Controller\Adminhtml\ProfileSchedule;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Config\Storage\WriterInterface;

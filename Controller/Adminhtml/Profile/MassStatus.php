@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileController\Adminhtml\Profile;
+namespace Byte8\Profile\Controller\Adminhtml\Profile;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;

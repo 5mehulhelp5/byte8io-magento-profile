@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileUi\DataProvider;
+namespace Byte8\Profile\Ui\DataProvider;
 
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Exception\LocalizedException;

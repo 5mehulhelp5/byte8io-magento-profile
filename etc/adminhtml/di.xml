@@ -48,7 +48,7 @@
             <argument name="sortOrder" xsi:type="number">90</argument>
         </arguments>
     </virtualType>
-    <!-- Profile config data UI form modifier -->
+    <!-- Profile form modifier pool: only profile-form-scoped modifiers. -->
     <virtualType name="Byte8\Profile\Ui\DataProvider\Profile\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
         <arguments>
             <argument name="modifiers" xsi:type="array">
@@ -60,18 +60,6 @@
                     <item name="class" xsi:type="string">Byte8\Profile\Ui\DataProvider\Profile\Form\Modifier\ProfileConfigData</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                 </item>
-                <item name="profile_history_list" xsi:type="array">
-                    <item name="class" xsi:type="string">Byte8\ProfileUi\DataProvider\Schedule\Modifier\Form\HistoryListModifier</item>
-                    <item name="sortOrder" xsi:type="number">1</item>
-                </item>
-                <item name="profile_schedule_list" xsi:type="array">
-                    <item name="class" xsi:type="string">Byte8\ProfileUi\DataProvider\Schedule\Modifier\Form\ScheduleListModifier</item>
-                    <item name="sortOrder" xsi:type="number">2</item>
-                </item>
-                <item name="profile_assignment_data" xsi:type="array">
-                    <item name="class" xsi:type="string">Byte8\ProfileUi\DataProvider\Schedule\Modifier\Form\ProfileAssignmentModifier</item>
-                    <item name="sortOrder" xsi:type="number">3</item>
-                </item>
             </argument>
         </arguments>
     </virtualType>
@@ -80,10 +68,28 @@
             <argument name="pool" xsi:type="object">Byte8\Profile\Ui\DataProvider\Profile\Form\Modifier\Pool</argument>
         </arguments>
     </type>
-    <!-- Profile schedule UI modifier -->
-    <type name="Byte8\ProfileUi\DataProvider\ScheduleDataProvider">
+    <!-- Schedule form modifier pool: schedule-form-scoped modifiers only. -->
+    <virtualType name="Byte8\Profile\Ui\DataProvider\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
         <arguments>
-            <argument name="pool" xsi:type="object">Byte8\ProfileUi\DataProvider\Form\Modifier\Pool</argument>
+            <argument name="modifiers" xsi:type="array">
+                <item name="profile_history_list" xsi:type="array">
+                    <item name="class" xsi:type="string">Byte8\Profile\Ui\DataProvider\Schedule\Modifier\Form\HistoryListModifier</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+                <item name="profile_schedule_list" xsi:type="array">
+                    <item name="class" xsi:type="string">Byte8\Profile\Ui\DataProvider\Schedule\Modifier\Form\ScheduleListModifier</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+                <item name="profile_assignment_data" xsi:type="array">
+                    <item name="class" xsi:type="string">Byte8\Profile\Ui\DataProvider\Schedule\Modifier\Form\ProfileAssignmentModifier</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Byte8\Profile\Ui\DataProvider\ScheduleDataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">Byte8\Profile\Ui\DataProvider\Form\Modifier\Pool</argument>
         </arguments>
     </type>
 </config>

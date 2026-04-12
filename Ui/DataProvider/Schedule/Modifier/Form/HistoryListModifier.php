@@ -44,6 +44,14 @@ class HistoryListModifier implements ModifierInterface
      */
     public function modifyMeta(array $meta): array
     {
+        // Only touch $meta if the target fieldset is already defined there.
+        // This modifier is scoped to the schedule form; running it on a form
+        // without this fieldset would produce a partial meta entry with no
+        // componentType and crash UiComponentFactory::mergeMetadataItem().
+        if (!isset($meta[self::DATA_SOURCE])) {
+            return $meta;
+        }
+
         if (!$this->canIncludeListing()) {
             return $meta;
         }

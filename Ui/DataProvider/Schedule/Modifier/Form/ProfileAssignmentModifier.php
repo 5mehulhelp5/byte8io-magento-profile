@@ -60,6 +60,10 @@ class ProfileAssignmentModifier implements ModifierInterface
      */
     public function modifyMeta(array $meta): array
     {
+        if (!isset($meta[self::DATA_SOURCE])) {
+            return $meta;
+        }
+
         if (!$this->canHideProfileFieldset()) {
             return $meta;
         }

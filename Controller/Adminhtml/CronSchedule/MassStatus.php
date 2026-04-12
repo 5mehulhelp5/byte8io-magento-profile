@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileController\Adminhtml\CronSchedule;
+namespace Byte8\Profile\Controller\Adminhtml\CronSchedule;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;

@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Byte8\ProfileObserver\Backend;
+namespace Byte8\Profile\Observer\Backend;
 
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\RequestInterface;

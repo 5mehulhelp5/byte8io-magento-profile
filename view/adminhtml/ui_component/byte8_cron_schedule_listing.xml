@@ -46,7 +46,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Byte8_Profile::manage</aclResource>
-        <dataProvider class="Byte8\ProfileUi\DataProvider\CronScheduleListingDataProvider" name="byte8_cron_schedule_listing_data_source">
+        <dataProvider class="Byte8\Profile\Ui\DataProvider\CronScheduleListingDataProvider" name="byte8_cron_schedule_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>schedule_id</primaryFieldName>
