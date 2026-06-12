@@ -75,6 +75,9 @@
         <index referenceId="BYTE8_PROFILE_HISTORY_TYPE_ID" indexType="btree">
             <column name="type_id"/>
         </index>
+        <index referenceId="BYTE8_PROFILE_HISTORY_CREATED_AT" indexType="btree">
+            <column name="created_at"/>
+        </index>
     </table>
     <table name="byte8_profile_queue" resource="default" engine="innodb" comment="Profile Queue">
         <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true"

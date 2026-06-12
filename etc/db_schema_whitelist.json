@@ -45,7 +45,8 @@
             "FK_1A70742AE8D5AE9FF1A42C4E37A913B8": true
         },
         "index": {
-            "SOFTCOMMERCE_PROFILE_HISTORY_TYPE_ID": true
+            "SOFTCOMMERCE_PROFILE_HISTORY_TYPE_ID": true,
+            "BYTE8_PROFILE_HISTORY_CREATED_AT": true
         }
     },
     "byte8_profile_queue": {
