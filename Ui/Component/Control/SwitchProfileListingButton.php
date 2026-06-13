@@ -11,6 +11,7 @@ namespace Byte8\Profile\Ui\Component\Control;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
+use Byte8\Core\Ui\Component\Control\FontAwesomeButton;
 
 /**
  * @inheritDoc
@@ -49,15 +50,17 @@ class SwitchProfileListingButton implements ButtonProviderInterface
 
         $entityName = explode('_', $profileEntity);
         $entityName = end($entityName);
-        $label = $entityName . ' ' . key($typeId);
+        $title = $entityName . ' ' . key($typeId);
         $typeId = current($typeId);
 
         return [
-            'label' => __('Switch To %1', ucwords($label)),
+            'title' => __('Switch To %1', ucwords($title)),
             'on_click' => sprintf(
                 "location.href = '%s';",
                 $this->urlBuilder->getUrl("$profileEntity/$typeId/index")
             ),
+            'class_name' => FontAwesomeButton::class,
+            FontAwesomeButton::FONT_NAME => 'fa-solid fa-shuffle',
             'class' => 'secondary',
             'sort_order' => 10
         ];

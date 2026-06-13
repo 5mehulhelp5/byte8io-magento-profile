@@ -8,12 +8,12 @@ declare(strict_types=1);
 
 namespace Byte8\Profile\Observer\Backend;
 
+use Byte8\Profile\Model\Config\ScheduleConfigInterface;
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Byte8\Profile\Model\Config\ScheduleConfigInterface;
 
 /**
  * @inheritDoc
@@ -24,7 +24,7 @@ class ProfileSaveAfterControllerAction implements ObserverInterface
      * @param CacheInterface $cache
      */
     public function __construct(
-        private readonly CacheInterface $cache
+        private CacheInterface $cache
     ) {
     }
 
